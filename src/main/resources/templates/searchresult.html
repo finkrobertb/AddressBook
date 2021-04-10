@@ -2,15 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Search Results</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<th:block th:replace="fragments/head" />
 </head>
 <body>
+	<th:block th:replace="fragments/top" />
+
 	<h3>Search Results:</h3>
+		<p th:text="${firstName} + ' ' + ${lastName}" />
+		<p th:text="${phoneNumber}" />
+		<p th:text="${email}" />
 
-	<p th:text="${firstName} + ' ' + ${lastName}" />
-	<p th:text="${phoneNumber}" />
-	<p th:text="${email}" />
+<!-- 	<div th:unless="${not #lists.isEmpty(entries)}"> -->
+<!-- 		<p>There is no entry with that email.</p> -->
+<!-- 	</div> -->
 
+	<br>
 	<a th:href="@{/}">Return to Main Menu</a>
 
 </body>

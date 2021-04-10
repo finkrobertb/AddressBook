@@ -2,17 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Addition Confirmed</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<th:block th:replace="fragments/head" />
 </head>
 <body>
+	<th:block th:replace="fragments/top" />
+
 	<h3>Your entry has been added.</h3>
 	<h4>New Entry:</h4>
 	<p th:text="${firstName} + ' ' + ${lastName}" />
 	<p th:text="${phoneNumber}" />
 	<p th:text="${email}" />
-
+	<br>
 	<p>
 		<a th:href="@{/}">Return to Main Menu</a>
+		
 	</p>
 
 </body>

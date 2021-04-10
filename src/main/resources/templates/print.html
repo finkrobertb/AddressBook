@@ -2,12 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Print</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<th:block th:replace="fragments/head" />
 </head>
 <body>
-	<h1>Welcome to TTS Address Book!</h1>
-	<h3>Here are all entries:</h3>
-
+	<th:block th:replace="fragments/top" />
+	<br>
 	<div th:if="${not #lists.isEmpty(entries)}">
 
 		<div th:each="entry : ${entries}">
@@ -15,8 +14,14 @@
 			<p th:text="${phoneNumber}" />
 			<p th:text="${email}" />
 		</div>
+
 	</div>
 
+	<div th:unless="${not #lists.isEmpty(entries)}">
+		<p>The address book is currently empty.</p>
+	</div>
+
+	<br>
 
 
 

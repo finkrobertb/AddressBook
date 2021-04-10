@@ -2,12 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Add</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <th:block th:replace="fragments/head"/>
+
 </head>
 <body>
-	<h1>Welcome to TTS Address Book!</h1>
-	<h3>Add an entry below:</h3>
+	    <th:block th:replace="fragments/top"/>
+	    
+<br>
 
+<div class="form">
 	<form action="#" th:action="@{/addresult}" th:object="${entry}" method="post">
 		<table>
 			<tr>
@@ -25,12 +28,10 @@
 			<tr>
 				<td>Email:</td>
 				<td><input type="text" th:field="*{email}" /></td>
-			</tr>
-			<tr>
-				<td><button type="submit">Add Entry</button></td>
-			</tr>
+			</tr>			
 		</table>
+			<button class="button" type="submit">Add Entry</button>
 	</form>
-
+</div>
 </body>
 </html>

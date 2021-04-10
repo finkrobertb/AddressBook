@@ -2,12 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Delete</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<th:block th:replace="fragments/head" />
 </head>
 <body>
-	<h3>All Entries were removed.</h3>
-	
-		<a th:href="@{/}">Return to Main Menu</a>
+	<th:block th:replace="fragments/top" />
+	<br>
+	<p>All Entries were removed.</p>
+	<br>
+	<a th:href="@{/}">Return to Main Menu</a>
 
 </body>
 </html>

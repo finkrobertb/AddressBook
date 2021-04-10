@@ -2,13 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Remove Confirmed</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<th:block th:replace="fragments/head" />
 </head>
+
 <body>
+	<th:block th:replace="fragments/top" />
+
 	<h3>Entry was removed.</h3>
-	
-		<p>If the email you provided was recorded in our database, the entry was deleted.</p>	
-		<a th:href="@{/}">Return to Main Menu</a>
+
+	<p>If the email you provided was recorded in our database, the
+		entry was deleted.</p>
+		<br>
+	<a th:href="@{/}">Return to Main Menu</a>
 
 </body>
 </html>
