@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Search</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Welcome to TTS Address Book!</h1>
+	<h3>Search for an entry below:</h3>
+
+	<p>Please enter the email of the entry to be search.<p>
+	<form action="#" th:action="@{/searchresult}" th:object="${entry}"
+		method="post">
+		<table>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" th:field="*{email}" /></td>
+			</tr>
+			<tr>
+				<td><button type="submit">Search</button></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>

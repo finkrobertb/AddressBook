@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Print</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Welcome to TTS Address Book!</h1>
+	<h3>Here are all entries:</h3>
+
+	<div th:if="${not #lists.isEmpty(entries)}">
+
+		<div th:each="entry : ${entries}">
+			<p th:text="${firstName} + ' ' + ${lastName}" />
+			<p th:text="${phoneNumber}" />
+			<p th:text="${email}" />
+		</div>
+	</div>
+
+
+
+
+	<a th:href="@{/}">Return to Main Menu</a>
+
+</body>
+</html>

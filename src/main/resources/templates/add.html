@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Welcome to TTS Address Book!</h1>
+	<h3>Add an entry below:</h3>
+
+	<form action="#" th:action="@{/addresult}" th:object="${entry}" method="post">
+		<table>
+			<tr>
+				<td>First Name:</td>
+				<td><input type="text" th:field="*{firstName}" /></td>
+			</tr>
+			<tr>
+				<td>Last Name:</td>
+				<td><input type="text" th:field="*{lastName}" /></td>
+			</tr>
+			<tr>
+				<td>Phone Number:</td>
+				<td><input type="text" th:field="*{phoneNumber}" /></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" th:field="*{email}" /></td>
+			</tr>
+			<tr>
+				<td><button type="submit">Add Entry</button></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>

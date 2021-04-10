@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Remove</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Welcome to TTS Address Book!</h1>
+	<h3>Delete an entry below:</h3>
+
+	<p>Please enter the email of the entry to be deleted.
+	<p>
+	<form action="#" th:action="@{/removeresult}" th:object="${entry}"
+		method="post">
+		<table>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" th:field="*{email}" /></td>
+			</tr>
+			<tr>
+				<td><button type="submit">Delete Entry</button></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
