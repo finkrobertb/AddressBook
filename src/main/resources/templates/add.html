@@ -2,36 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Add</title>
-    <th:block th:replace="fragments/head"/>
+<th:block th:replace="fragments/head" />
 
 </head>
 <body>
-	    <th:block th:replace="fragments/top"/>
-	    
-<br>
+	<th:block th:replace="fragments/top" />
 
-<div class="form">
-	<form action="#" th:action="@{/addresult}" th:object="${entry}" method="post">
-		<table>
-			<tr>
-				<td>First Name:</td>
-				<td><input type="text" th:field="*{firstName}" /></td>
-			</tr>
-			<tr>
-				<td>Last Name:</td>
-				<td><input type="text" th:field="*{lastName}" /></td>
-			</tr>
-			<tr>
-				<td>Phone Number:</td>
-				<td><input type="text" th:field="*{phoneNumber}" /></td>
-			</tr>
-			<tr>
-				<td>Email:</td>
-				<td><input type="text" th:field="*{email}" /></td>
-			</tr>			
-		</table>
+	<br>
+
+	<div class="form">
+		<form action="#" th:action="@{/addresult}" th:object="${entry}"
+			method="post">
+			<table>
+				<tr>
+					<td>First Name:</td>
+					<td><input type="text" th:field="*{firstName}" /></td>
+				</tr>
+				<tr>
+					<td>Last Name:</td>
+					<td><input type="text" th:field="*{lastName}" /></td>
+				</tr>
+				<tr>
+					<td>Phone Number:</td>
+					<td><input type="text" th:field="*{phoneNumber}" /></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="text" th:field="*{email}" /></td>
+				</tr>
+			</table>
 			<button class="button" type="submit">Add Entry</button>
-	</form>
-</div>
+		</form>
+	</div>
+
+
 </body>
 </html>

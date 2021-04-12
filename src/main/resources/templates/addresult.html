@@ -7,15 +7,24 @@
 <body>
 	<th:block th:replace="fragments/top" />
 
-	<h3>Your entry has been added.</h3>
+	<!-- 	<div th:if="${not #lists.isEmpty(entries)}"> -->
+
+	<br>
 	<h4>New Entry:</h4>
+	<br>
 	<p th:text="${firstName} + ' ' + ${lastName}" />
 	<p th:text="${phoneNumber}" />
 	<p th:text="${email}" />
+	<!-- 	</div> -->
+
+	<!-- 	<div th:unless="${not #lists.isEmpty(entries)}"> -->
+	<!-- 		<p>The email you entered is currently in use. Please try again.</p> -->
+	<!-- 	</div> -->
+
 	<br>
 	<p>
 		<a th:href="@{/}">Return to Main Menu</a>
-		
+
 	</p>
 
 </body>

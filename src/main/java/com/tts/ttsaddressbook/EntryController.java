@@ -1,6 +1,5 @@
 package com.tts.ttsaddressbook;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//@Component
-//@ComponentScan("com.tts.ttsaddressbook.EntryService")
 @Controller
 public class EntryController
 {
@@ -57,19 +54,15 @@ public class EntryController
         return "delete";
     }
 
+    // Returns print.html
     @RequestMapping("/print")
     public String print(Entry entry)
     {
         return "print";
     }
 
-    // Everything below this
-
-    //public List<Entry> findByEmail(String email);
-
     @Autowired
     private EntryRepository entryRepository;
-
     private EntryService entryService;
 
     @Autowired
@@ -78,22 +71,38 @@ public class EntryController
         this.entryService = entryService;
     }
 
-    // GET request to add.html
     @GetMapping(value = "/add")
     public String addEntry(Entry entry, Model model)
     {
+        // Adds place holders to add.html form
         entry.setFirstName("John");
         entry.setLastName("Doe");
         entry.setPhoneNumber("555-555-5555");
         entry.setEmail("fake@email.com");
+
         return "add";
     }
 
-    // POST to addresult.html
     @PostMapping(value = "/addresult")
     public String displayForm(Entry entry, Model model)
     {
+        // Creates a list of entries and stores entries with that email
+        Iterable<Entry> entries = entryRepository.findAll();
+
+        // Checks each entry in entries
+        for(Entry i : entries)
+        {
+            // If email matches what is already in the list, return error page
+            if(i.getEmail().equals(entry.getEmail()))
+            {
+                return "adderror";
+            }
+        }
+
+        // Save a new entry in the repository
         entryRepository.save(new Entry(entry.getFirstName(), entry.getLastName(), entry.getPhoneNumber(), entry.getEmail(), entry.getEntryRecorded()));
+
+        // Sends fields to addresult.html
         model.addAttribute("firstName", entry.getFirstName());
         model.addAttribute("lastName", entry.getLastName());
         model.addAttribute("phoneNumber", entry.getPhoneNumber());
@@ -106,6 +115,7 @@ public class EntryController
     @GetMapping(value = "/remove")
     public String removeSubscriber(Entry entry, Model model)
     {
+        // Adds place holder to remove.html
         entry.setEmail("fake@email.com");
 
         return "remove";
@@ -116,6 +126,13 @@ public class EntryController
     {
         // Creates a list of entries and stores entries with that email
         List<Entry> entries = entryRepository.findByEmail(entry.getEmail());
+
+        // If there are no entries in the list, return the error page
+        if(entries.size() == 0)
+        {
+            return "error";
+        }
+
         // Grab the first entry of that list
         Entry firstEntry = entries.get(0);
         // Delete the first entry
@@ -127,6 +144,7 @@ public class EntryController
     @GetMapping(value = "/search")
     public String search(Entry entry, Model model)
     {
+        // Adds place holder to search.html
         entry.setEmail("fake@email.com");
 
         return "search";
@@ -137,33 +155,29 @@ public class EntryController
     {
         // Creates a list of entries and stores entries with that email
         List<Entry> entries = entryRepository.findByEmail(entry.getEmail());
+
+        // If there are no entries in the list, return the error page
+        if(entries.size() == 0)
+        {
+            return "error";
+        }
+
         // Grab the first entry of that list
         Entry firstEntry = entries.get(0);
-        // Add the attributes of the first entry to output in /searchresult
+
+        // Add the attributes of the first entry to output in searchresult.html
         model.addAttribute("firstName", firstEntry.getFirstName());
         model.addAttribute("lastName", firstEntry.getLastName());
         model.addAttribute("phoneNumber", firstEntry.getPhoneNumber());
         model.addAttribute("email", firstEntry.getEmail());
 
-        //model.addAttribute("entries", entryService.listAllEntries());
-
         return "searchresult";
     }
 
-    // TODO
     @GetMapping(value = "/print")
     public String printAll(Entry entry, Model model)
     {
-        
-        Iterable<Entry> entries = entryRepository.findAll();
-        
-        for(Entry x : entries) {
-            model.addAttribute("firstName", x.getFirstName());
-            model.addAttribute("lastName", x.getLastName());
-            model.addAttribute("phoneNumber", x.getPhoneNumber());
-            model.addAttribute("email", x.getEmail());
-            model.addAttribute("entries", entryService.listAllEntries());
-        }
+        model.addAttribute("entries", entryService.listAllEntries());
 
         return "print";
     }
@@ -171,7 +185,9 @@ public class EntryController
     @GetMapping(value = "/delete")
     public String deleteAll(Entry entry, Model model)
     {
+        // Deletes all entries in repository
         entryRepository.deleteAll();
+
         return "delete";
     }
 

@@ -9,23 +9,22 @@
 	<br>
 	<div th:if="${not #lists.isEmpty(entries)}">
 
+	<h4>All Entries:</h4>
+	<br>
 		<div th:each="entry : ${entries}">
-			<p th:text="${firstName} + ' ' + ${lastName}" />
-			<p th:text="${phoneNumber}" />
-			<p th:text="${email}" />
+			<p th:text="${entry.firstName} + ' ' + ${entry.lastName}" />
+			<p th:text="${entry.email}" />
+			<p th:text="${entry.phoneNumber}" />
+			<br>
 		</div>
 
 	</div>
 
 	<div th:unless="${not #lists.isEmpty(entries)}">
 		<p>The address book is currently empty.</p>
+		<br>
 	</div>
-
-	<br>
-
-
-
 	<a th:href="@{/}">Return to Main Menu</a>
-
+	<br>
 </body>
 </html>

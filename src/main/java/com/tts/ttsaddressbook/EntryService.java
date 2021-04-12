@@ -31,10 +31,5 @@ public class EntryService
        return entries.get(0); //return first entry found.
     }
     
-//    // Find all - pass through repository
-//    public List<Entry> findByEmail()
-//    {
-//        List<Entry> entries = entryRepository.findByEmail(email);
-//        return entries;
-//    }
+
 }

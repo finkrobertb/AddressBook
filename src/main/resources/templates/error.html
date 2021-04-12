@@ -8,11 +8,7 @@
 	<th:block th:replace="fragments/top" />
 
 	<br>
-	<h4> Search Results: </h4>
-	<br>
-	<p th:text="${firstName} + ' ' + ${lastName}" />
-	<p th:text="${phoneNumber}" />
-	<p th:text="${email}" />
+		<p>There is no entry with that email in the address book.</p>
 
 	<br>
 	<a th:href="@{/}">Return to Main Menu</a>
