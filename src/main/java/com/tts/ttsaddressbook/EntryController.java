@@ -7,59 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class EntryController
 {
-    // Returns main page index when visiting the site
-    @GetMapping
-    public String index(Entry entry)
-    {
-        return "index";
-    }
-
-    // Returns add.html
-    @RequestMapping("/add")
-    public String add(Entry entry)
-    {
-        return "add";
-    }
-
-    // Returns addresult.html
-    @RequestMapping("/addresult")
-    public String addresult(Entry entry)
-    {
-        return "addresult";
-    }
-
-    // Returns remove.html
-    @RequestMapping("/remove")
-    public String remove(Entry entry)
-    {
-        return "remove";
-    }
-
-    // Returns removeresult.html
-    @RequestMapping("/removeresult")
-    public String removeresult(Entry entry)
-    {
-        return "removeresult";
-    }
-
-    // Returns delete.html
-    @RequestMapping("/delete")
-    public String delete(Entry entry)
-    {
-        return "delete";
-    }
-
-    // Returns print.html
-    @RequestMapping("/print")
-    public String print(Entry entry)
-    {
-        return "print";
-    }
 
     @Autowired
     private EntryRepository entryRepository;
@@ -69,6 +20,13 @@ public class EntryController
     public void setEntryService(EntryService entryService)
     {
         this.entryService = entryService;
+    }
+
+    // Returns main page index when visiting the site
+    @GetMapping
+    public String index(Entry entry)
+    {
+        return "index";
     }
 
     @GetMapping(value = "/add")
@@ -177,6 +135,7 @@ public class EntryController
     @GetMapping(value = "/print")
     public String printAll(Entry entry, Model model)
     {
+        // List all entries from entryService
         model.addAttribute("entries", entryService.listAllEntries());
 
         return "print";

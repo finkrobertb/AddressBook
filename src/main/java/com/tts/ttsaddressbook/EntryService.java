@@ -16,19 +16,24 @@ public class EntryService
     @Autowired
     EntryController entryController;
 
+    // Returns a list with all entries
     List<Entry> listAllEntries()
     {
         return (List<Entry>) entryRepository.findAll();
     }
 
+    // Returns first entry of list of all users by email
     public Entry getEntryByEmail(String email) 
     {
        List<Entry> entries = entryRepository.findByEmail(email);
+       
+       // If list size is 0, no entries were found
        if (entries.size() == 0)
        {
-          return null; //No entry found.
+          return null; 
        }
-       return entries.get(0); //return first entry found.
+       
+       return entries.get(0); 
     }
     
 
